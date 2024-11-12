@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    ports: 
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: bitnami/postgresql
+    ports: 
+      - 5435:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=mock-server
